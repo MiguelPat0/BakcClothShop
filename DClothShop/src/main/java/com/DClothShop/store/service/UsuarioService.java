@@ -31,4 +31,7 @@ public class UsuarioService implements IUsuarioService {
 		return iUsuarioRepo.findById(id);
 	}
 	
+	public Optional<Usuario> buscaUser(Usuario us) {
+		return iUsuarioRepo.findByNamePwd(us.getNombre(),us.getPassword());
+	}
 }

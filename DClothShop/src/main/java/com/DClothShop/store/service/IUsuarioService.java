@@ -20,4 +20,6 @@ public interface IUsuarioService {
 	
 	public Optional<Usuario> buscarUsuario(int id);
 	
+	public Optional<Usuario> buscaUser(Usuario us);
+	
 }

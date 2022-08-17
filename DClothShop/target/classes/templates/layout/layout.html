@@ -21,9 +21,9 @@
 			<div class="list-group list-group-flush" >
 				<a
 					class="list-group-item list-group-item-info p-3"
-					href="#!">Dashboard</a> <a
+					th:href="@{/up}">Dashboard</a> <a
 					class="list-group-item list-group-item-action list-group-item-danger p-3"
-					href="#!">Shortcuts</a> <a
+					href="#!" id="btnCargar">Cargar</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Overview</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -40,8 +40,7 @@
 			<nav
 				class="navbar navbar-expand-lg navbar-light   border-bottom" style="background-color: #0FCFDF;">
 				<div class="container-fluid">
-					<button class="btn btn-primary" id="sidebarToggle">Toggle
-						Menu</button>
+					<button class="btn btn-primary" id="sidebarToggle">						Menu</button>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -50,7 +49,7 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-							<li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+							<li class="nav-item active"><a class="nav-link" id='loginn' href="#">LogIn</a></li>
 							<li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
@@ -72,6 +71,108 @@
 			
 			
 			</div>
+			
+		<div class="modal" tabindex="-1" role="dialog" id="modalNUsuario">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Registrar nuevo Usuario de la APP</h5>    
+		      </div>
+		      
+		      	<div class="modal-body">
+		      		<span class="badge badge-dark">User</span>
+		      		<input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon2" id="iNombreA">
+		      	</div>
+		      
+		      	<div class="modal-body">
+		      		<span class="badge badge-dark">Contraseña</span>
+		      		<input type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña" aria-describedby="basic-addon2" id="iContraseñaA">
+		      	</div>
+		      	
+		      
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" id="guardaNUserA">Guardar</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeMoNUA">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<div class="modal" tabindex="-1" role="dialog" id="modalNProd">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Registrar nuevo Producto</h5>    
+		      </div>
+		      
+		      	<div class="modal-body">
+		      			
+		      
+		      		<form  th:action="@{/cargar}" th:object="${producto}" method="post" enctype="multipart/form-data">
+                                                
+                                <div class="input-group">
+                                    <label class="label">Nombree*</label>
+                                    <input class="input--style-1" type="text" name="address" placeholder="Name" th:field="*{nombre}" required="required">
+                                    <!-- <i class="zmdi zmdi-account-add input-group-symbol"></i> -->
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">categoria</label>
+                                    <input class="input--style-1" type="text"  name="address" placeholder="Last name" th:field="*{categoria}" required="required">
+                                    
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">subcategoria*</label>
+                                    <input class="input--style-1" type="text"  name="address" placeholder="movil" th:field="*{subcategoria}" required="required">
+                                    
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">genero</label>
+                                    <input class="input--style-1" type="text"  name="address" placeholder="fijo" th:field="*{genero}" >
+                                   
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">color</label>
+                                    <input class="input--style-1" type="text"  name="address" placeholder="correo" th:field="*{color}" >
+                                    
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">precio*</label>
+                                    <input class="input--style-1" type="number"  name="address" placeholder="direccion" th:field="*{precio}" >
+                                   
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">url</label>
+                                    <input class="input--style-1" type="text"  name="address" placeholder="correo" th:field="*{url}" >
+                                    
+                                </div>
+                                <input type="file" class="form-control" name="archivos"> <input
+									type="submit" value="Carga">
+                                  </form>
+		      		</div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" id="guardaNUserA">Guardar</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeMoNUA">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div id="myModalImg" class="modal fade" role="dialog">  
+			<div class="modal-dialog">
+			    <div class="modal-content">      
+			        <div class="modal-header">        
+			            <button type="button" class="close" data-dismiss="modal">×</button>        
+			            <h4 class="modal-title"  id="tittleMod"></h4>      </div>      
+			        <div id="theDiv" class="modal-body">   </div>      
+			        <div class="modal-footer">        
+			            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>     
+			        </div>  
+			    </div>  
+			</div>
+		
+		
+			
 		</div>
 	</div>
 	
@@ -85,7 +186,9 @@
 
 	<!--OTRO SCRIPTS PARA PAGINAS-->
 	<th:block layout:fragment="page-scripts">
-
+		<link th:href="@{/css/styles1.css}" rel="stylesheet" />
+		
+		
 	</th:block>
 </body>
 </html>
